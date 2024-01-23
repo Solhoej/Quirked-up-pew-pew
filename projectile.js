@@ -1,27 +1,22 @@
-class Projectile
-{
-  constructor(x)
-  {
+class Projectile {
+  constructor(x) {
     this.x = (x + 8);
     this.y = (height - 30);
   }
-  
-  show()
-  {
+
+  show() {
     push();
     stroke(44, 2, 250);
     fill(3, 185, 255);
     rect(this.x, this.y, 4, 10, 5);
     pop();
   }
-  
-  update()
-  {
+
+  update() {
     this.y -= 5;
   }
-  
-  edging()
-  {
+
+  edging() {
     if (this.y < 0)
       return true
   }

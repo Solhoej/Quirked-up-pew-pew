@@ -1,32 +1,26 @@
-class Enemy
-{
-  constructor()
-  {
+class Enemy {
+  constructor() {
     this.positionX = random(20, 380);
     this.positionY = 0;
   }
-  
-  collision(other)
-  {
+
+  collision(other) {
     if (dist(this.positionX, this.positionY, other.x, other.y) < 20)
       return true;
   }
-  
-  show()
-  {
+
+  show() {
     push()
-    fill(0,255,0);
+    fill(0, 255, 0);
     rect(this.positionX, this.positionY, 20, 20);
     pop();
   }
-  
-  update()
-  {
+
+  update() {
     this.positionY += 2;
   }
-  
-  edging()
-  {
+
+  edging() {
     if (this.positionY > height)
       return true;
   }
