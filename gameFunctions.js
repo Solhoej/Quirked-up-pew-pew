@@ -37,42 +37,19 @@ function Hiscore() {
     text("HI-Score: " + hiscore, 135, 20);
 }
 
-function Player() {
-    rect(boxPos, (height - 30), 20, 20);
-
-    if (keyIsDown(RIGHT_ARROW))
-        boxPos += 5;
-
-    if (keyIsDown(LEFT_ARROW))
-        boxPos -= 5;
-
-    if (boxPos < 0)
-        boxPos = 0;
-
-    if (boxPos > width - 20)
-        boxPos = width - 20;
-
-}
-
 function keyPressed() {
     if (gameState === "game") {
         if (keyCode == 32) {
-            projectiles.push(new Projectile(boxPos));
-            soundChoice = int(random(1, 100));
-
-            if (soundChoice == 1) {
-                reverb.play();
-            } else {
-                pew.play();
-            }
+            projectiles.push(new Projectile(Player.playerPos + 10));
+            pew.play();
         }
     }
 }
 
 function EnemySpawn() {
     spawnTime++
-    if (spawnTime > spawnInterval) {
-        enemies.push(new Enemy())
+    if (spawnTime > windowWidth/25) {
+        enemies.push(new Enemy(tieFighterSprite))
         spawnTime = 0;
     }
 }

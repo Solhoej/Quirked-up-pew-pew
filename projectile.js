@@ -1,13 +1,12 @@
 class Projectile {
   constructor(x) {
     this.x = (x + 8);
-    this.y = (height - 30);
+    this.y = (windowHeight - 30);
   }
 
   show() {
     push();
-    stroke(44, 2, 250);
-    fill(3, 185, 255);
+    fill(255,0,0);
     rect(this.x, this.y, 4, 10, 5);
     pop();
   }

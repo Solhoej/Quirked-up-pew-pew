@@ -1,5 +1,5 @@
 class Star {
-    constructor(x = random(0, width), y = random(0, height)) {
+    constructor(x = random(0, windowWidth), y = random(0, windowHeight)) {
         this.x = x
         this.y = y
         this.speed = 0.2
@@ -8,7 +8,7 @@ class Star {
     show() {
         noStroke();
         fill(255);
-        circle(this.x, this.y, 3)
+        circle(this.x, this.y, 2)
     }
 
     update() {
@@ -16,7 +16,7 @@ class Star {
     }
 
     edging() {
-        if (this.y > 500)
+        if (this.y > windowHeight)
             return true;
     }
 }

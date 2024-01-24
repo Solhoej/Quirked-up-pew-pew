@@ -1,23 +1,33 @@
 class Enemy {
-  constructor() {
-    this.positionX = random(20, 380);
+  constructor(sprite) {
+    this.positionX = random(20, windowWidth - 20);
     this.positionY = 0;
+    this.sprite = sprite;
+    this.fired = false;
   }
 
+
   collision(other) {
-    if (dist(this.positionX, this.positionY, other.x, other.y) < 20)
+    if (dist(this.positionX, this.positionY, other.x, other.y) < 35)
       return true;
   }
 
   show() {
     push()
-    fill(0, 255, 0);
-    rect(this.positionX, this.positionY, 20, 20);
+    imageMode(CENTER)
+    image(this.sprite, this.positionX, this.positionY);
     pop();
   }
 
   update() {
     this.positionY += 2;
+  }
+
+  firing() {
+    if (!this.fired) {
+      this.fired = true;
+      return true
+    }
   }
 
   edging() {

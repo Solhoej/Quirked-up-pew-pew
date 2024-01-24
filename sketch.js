@@ -6,6 +6,9 @@ function StartGame() {
 function draw() {
   background(0);
 
+  Player.show();
+  Player.movement();
+
   for (let i = stars.length - 1; i >= 0; i--) {
     let star = stars[i];
     star.show()
@@ -13,7 +16,7 @@ function draw() {
 
     if (star.edging()) {
       stars.splice(i, 1);
-      stars.push(new Star(random(0, width), -5));
+      stars.push(new Star(random(0, windowWidth), -5));
     }
   }
 
@@ -33,30 +36,50 @@ function draw() {
       let enemy = enemies[i];
       enemy.show();
       enemy.update();
+      console.log(enemyProjectiles);
+
+      if (abs(enemy.positionX - Player.playerPos) < 40) {
+        let enemyProjectile = new EnemyProjectile(enemy.positionX, enemy.positionY, tiepew)
+        if (enemy.firing()) {
+          enemyProjectiles.push(enemyProjectile);
+        }
+      }
 
       if (enemy.edging()) {
         enemies.splice(i, 1);
         hp--;
       }
-
     }
 
-    for (let i = enemies.length - 1; i >= 0; i--) {
-      let enemy = enemies[i];
-      for (let j = projectiles.length - 1; j >= 0; j--) {
-        let projectile = projectiles[j];
+    for (let i = enemyProjectiles.length - 1; i >= 0; i--) {
+      let enemyProjectile = enemyProjectiles[i];
+      enemyProjectile.show();
+      enemyProjectile.update();
 
-        if (enemy.collision(projectile)) {
-          enemies.splice(i, 1);
-          projectiles.splice(j, 1);
-          score++
-        }
-      }
+      if (enemyProjectile.y > windowHeight)
+        enemyProjectiles.splice(i, 1);
     }
+
+    CollissionDetection();
   }
 
   Health();
   Scoreboard();
-  Player();
+  //Player();
   Hiscore();
+}
+
+function CollissionDetection() {
+  for (let i = enemies.length - 1; i >= 0; i--) {
+    let enemy = enemies[i];
+    for (let j = projectiles.length - 1; j >= 0; j--) {
+      let projectile = projectiles[j];
+
+      if (enemy.collision(projectile)) {
+        enemies.splice(i, 1);
+        projectiles.splice(j, 1);
+        score++
+      }
+    }
+  }
 }
