@@ -6,11 +6,6 @@ function StartGame() {
 function draw() {
   background(0);
 
-  Scoreboard();
-  Player();
-  Health();
-  Hiscore();
-
   for (let i = stars.length - 1; i >= 0; i--) {
     let star = stars[i];
     star.show()
@@ -59,4 +54,9 @@ function draw() {
       }
     }
   }
+
+  Health();
+  Scoreboard();
+  Player();
+  Hiscore();
 }

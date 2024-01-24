@@ -23,8 +23,6 @@ const height = 500;
 function preload() {
     reverb = loadSound('sounds/fart.mp3')
     pew = loadSound('sounds/pew.mp3')
-    ken = loadSound('sounds/ken.mp3')
-    //drift = loadSound('sounds/drift.mp3');
 
     heart = loadImage('assets/heart.png')
     arcadeFont = loadFont('assets/retrofont.ttf')
@@ -34,7 +32,7 @@ function setup() {
     createCanvas(width, height);
     heart.resize(25, 25);
 
-    for (let i = 0; i < int(random(200, 500)); i++) {
+    for (let i = 0; i < int(random(50, 100)); i++) {
         stars.push(new Star());
     }
 
