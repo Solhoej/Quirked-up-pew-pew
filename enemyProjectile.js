@@ -23,7 +23,7 @@ class EnemyProjectile {
     }
 
     collision(player) {
-        if (dist(this.x, this.y, player.playerPos, (windowHeight - 45)) < 35);
+        if (dist(this.positionX, this.positionY, player.x, player.y) < 35)
         return true;
     }
 }
