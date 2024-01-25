@@ -27,7 +27,7 @@ class Enemy {
     if (!this.fired) {
       this.fired = true;
       return true
-    }
+    } 
   }
 
   edging() {

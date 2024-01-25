@@ -53,8 +53,20 @@ function draw() {
 
     for (let i = enemyProjectiles.length - 1; i >= 0; i--) {
       let enemyProjectile = enemyProjectiles[i];
+      let hit = false;
       enemyProjectile.show();
       enemyProjectile.update();
+
+      if (enemyProjectile.collision(Player)) {
+        console.log('nah id win');
+        if (!hit) {
+          enemyProjectiles.splice(i, 1);
+          hp--;
+          hit = true;
+        }
+      } else {
+        hit = false;
+      }
 
       if (enemyProjectile.y > windowHeight)
         enemyProjectiles.splice(i, 1);
@@ -65,7 +77,6 @@ function draw() {
 
   Health();
   Scoreboard();
-  //Player();
   Hiscore();
 }
 

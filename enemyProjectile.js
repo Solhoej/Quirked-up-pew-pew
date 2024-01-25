@@ -13,7 +13,7 @@ class EnemyProjectile {
 
         push();
         fill(0, 255, 0);
-        rect(this.x - 10, this.y, 4, 10);
+        rect(this.x, this.y, 4, 10);
         pop();
 
     }
@@ -22,8 +22,8 @@ class EnemyProjectile {
         this.y += 10;
     }
 
-    collision(player) {
-        if (dist(this.positionX, this.positionY, player.x, player.y) < 35)
+    collision(other) {
+        if (dist(this.x, this.y, other.playerPos, (windowHeight - 45)) < 35)
         return true;
     }
 }
