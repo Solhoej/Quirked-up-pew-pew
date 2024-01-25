@@ -53,20 +53,29 @@ function draw() {
 
     for (let i = enemyProjectiles.length - 1; i >= 0; i--) {
       let enemyProjectile = enemyProjectiles[i];
+      let av = false
       enemyProjectile.show();
       enemyProjectile.update();
 
-      if (enemyProjectile.y > windowHeight)
+      if (enemyProjectile.collision(Player)) {
+        if (!av) {
+          av = true;
+          hp--;
+        }
+      }
+
+      if (enemyProjectile.y > windowHeight) {
         enemyProjectiles.splice(i, 1);
+      }
+
+      CollissionDetection();
     }
 
-    CollissionDetection();
+    Health();
+    Scoreboard();
+    //Player();
+    Hiscore();
   }
-
-  Health();
-  Scoreboard();
-  //Player();
-  Hiscore();
 }
 
 function CollissionDetection() {

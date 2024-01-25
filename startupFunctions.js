@@ -26,7 +26,6 @@ function preload() {
 
     heart = loadImage('assets/heart.png')
     arcadeFont = loadFont('assets/retrofont.ttf')
-    crosshair = loadImage('assets/crosshair.png')
 
     xWingSprite = loadImage('sprites/xwing.png')
     tieFighterSprite = loadImage('sprites/tiefighter.png')
@@ -37,7 +36,6 @@ function setup() {
     xWingSprite.resize(40, 40);
     tieFighterSprite.resize(40, 40);
     heart.resize(25, 25);
-    crosshair.resize(10, 10);
 
     for (let i = 0; i < int(random(50, 100)); i++) {
         stars.push(new Star());
